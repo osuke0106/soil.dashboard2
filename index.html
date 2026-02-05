@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>土壌診断マップ</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body { margin: 0; }
+    #map { height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([35.9912, 139.0834], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    fetch('soil.json')
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(soil => {
+          // 星の生成関数
+          const stars = (n) => '★'.repeat(n) + '☆'.repeat(5-n);
+          
+          const popupContent = `
+            <strong>${soil.name}</strong><br>
+            <img src="${soil.story_image}" style="width:100%; max-width:180px; border-radius:4px; margin:8px 0;"><br>
+            評価：${soil.rank}<br>
+            ${soil.summary}<br><br>
+            🍚 おいしさ：${stars(soil.brand_scores.taste)}<br>
+            🌏 環境：${stars(soil.brand_scores.environment)}<br>
+            🛡 安全：${stars(soil.brand_scores.safety)}<br><br>
+            <a href="soil.html?id=${soil.soil_id}">詳細診断を見る</a>
+          `;
+          L.marker([soil.lat, soil.lng])
+            .addTo(map)
+            .bindPopup(popupContent);
+        });
+      });
+  </script>
+</body>
+</html>

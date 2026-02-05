@@ -1,0 +1,28 @@
+[
+  {
+    "soil_id": "CHC-OTA-03",
+    "name": "秩父市 太田地区・第3水田",
+    "location": "埼玉県秩父市太田",
+    "lat": 35.9912,
+    "lng": 139.0834,
+    "rank": "A",
+    "summary": "自然の力が活きる土壌",
+    "one_line": "有機物が豊富で微生物が活発に働く、安定した土壌です。",
+    "brand_scores": {
+      "taste": 4,
+      "soil_health": 5,
+      "environment": 4,
+      "safety": 5
+    },
+    "story": "この田んぼの土壌は有機物が豊富で、微生物が活発に活動しています。そのため稲の根が健全に育ち、養分をゆっくり吸収できます。その結果、甘みとコクのあるお米になります。",
+    "story_image": "soil_story.png",
+    "analysis": {
+      "pH": 6.1,
+      "cn_ratio": 12.5,
+      "microbial": "高",
+      "ec": "低",
+      "heavy_metals": "基準値以下"
+    },
+    "linked_rice": "RICE-OTA-2025"
+  }
+]
