@@ -35,11 +35,18 @@
             🛡 安全：${stars(soil.brand_scores.safety)}<br><br>
             <a href="soil.html?id=${soil.soil_id}">詳細診断を見る</a>
           `;
-          L.marker([soil.lat, soil.lng])
+          L.circleMarker([soil.lat, soil.lng], {
+            radius: 10,           // 半径（メートル）。ここを調整すると地図上での大きさが変わります
+            color: '#333',         // 縁取りの色（黒）
+            weight: 1.5,             // 縁取りの太さ
+            fillColor: '#ffaa00',  // 中の色（オレンジ系）
+            fillOpacity: 1.0       // 透明度
+            })
             .addTo(map)
             .bindPopup(popupContent);
         });
       });
   </script>
 </body>
+
 </html>
